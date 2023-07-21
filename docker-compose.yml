@@ -1,0 +1,44 @@
+services:
+  cake_app:
+    build: .
+    container_name: cake_app_container
+    command: sh -c "apache2-foreground"
+    volumes:
+      - .:/var/www/html
+    ports:
+      - 5000:80
+    depends_on:
+      - db
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:5000" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
+    # networks:
+    #   - app_network
+  db:
+    image: mysql:5.7.16
+    container_name: mysqldb_cake_container
+    # command: --default-authentication-plugin=mysql_native_password
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      # - MYSQL_ALLOW_EMPTY_PASSWORD=true
+    ports:
+      - 3306:${MYSQL_PORT}
+    volumes:
+      - ./data/mysql/db:/var/lib/mysql
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    restart: always
+    environment:
+      PMA_HOST: db
+      PMA_USER: ${MYSQL_USER}
+      PMA_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "5080:80"
+# networks:
+#   app_network:

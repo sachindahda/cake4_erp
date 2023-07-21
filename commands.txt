@@ -1,0 +1,62 @@
+docker run --rm -v $(pwd):/var/www/html composer create-project --prefer-dist cakephp/app .
+
+
+docker compose up --build
+#then loginto container of cake app
+docker compose exec -it cake_app bash
+#and run following command (in /var/www/html/)
+composer create-project --prefer-dist cakephp/app:~4.0 .
+
+#In your terminal, navigate to your CakePHP project directory and execute the following command:
+docker-compose exec -it web bin/cake bake migration CreateUsers
+
+#Apply the migration to create the users table by executing the following command:
+docker-compose exec web bin/cake migrations migrate
+
+composer create-project --prefer-dist cakephp/app:~4.0 . &&
+             apache2-foreground &&
+
+
+
+
+----------------------------------
+#one time command to install cakephp in docker compose service named cake_app
+docker compose run cake_app composer create-project --prefer-dist cakephp/app:~4.0 cake-app
+
+#Create a new migration file to define your initial basic tables. In your terminal, navigate to your #CakePHP project directory and execute the following command:
+docker compose exec -it cake_app cake-app/bin/cake bake migration CreateUsers
+#migrate it
+docker compose exec -it cake_app cake-app/bin/cake migrations migrate
+#create admin controller
+bin/cake bake controller Admin --actions login --no-actions --prefix admin
+#create user controller
+docker compose exec -it cake_app cake-app/bin/cake bake controller Users --actions login
+#create login ctp
+docker compose exec -it cake_app cake-app/bin/cake bake template Users --prefix Admin
+#authentication package
+php /usr/bin/composer require "cakephp/authentication:^2.4"
+#to add migrations
+bin/cake bake migration AddEmailToUsers email:string[120]:unique:EMAIL_INDEX
+#to clear cache
+bin/cake cache clear_all
+#give permisssions
+chmod -R 777 cake-app/tmp/
+
+
+
+-                   -                   -
+#create migrations
+bin/cake bake migration CreateProducts name:string description:text created modified
+
+
+
+
+
+
+
+
+
+
+
+
+
