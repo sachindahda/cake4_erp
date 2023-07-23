@@ -14,12 +14,12 @@ use Cake\ORM\Entity;
  * @property string|null $referral_id
  * @property string|null $type
  * @property string $booking_type
- * @property int $administrators_id
+ * @property int $user_id
  * @property string|null $package
  * @property string|null $name
  * @property string|null $email
  * @property string|null $contact
- * @property string|null $vanue_address
+ * @property string|null $venue_address
  * @property string|null $latitude
  * @property string|null $longitude
  * @property int|null $distance
@@ -45,7 +45,7 @@ use Cake\ORM\Entity;
  * @property string|null $created
  * @property string|null $modified
  *
- * @property \App\Model\Entity\Administrator $administrator
+ * @property \App\Model\Entity\User $user
  */
 class KdOrder extends Entity
 {
@@ -64,12 +64,12 @@ class KdOrder extends Entity
         'referral_id' => true,
         'type' => true,
         'booking_type' => true,
-        'administrators_id' => true,
+        'users_id' => true,
         'package' => true,
         'name' => true,
         'email' => true,
         'contact' => true,
-        'vanue_address' => true,
+        'venue_address' => true,
         'latitude' => true,
         'longitude' => true,
         'distance' => true,
@@ -94,6 +94,9 @@ class KdOrder extends Entity
         'status' => true,
         'created' => true,
         'modified' => true,
-        'administrator' => true,
+        'no_of_person'=>true,
+        'user' => true,
+        'gst' => true,
+
     ];
 }

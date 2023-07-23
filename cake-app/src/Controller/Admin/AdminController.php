@@ -76,6 +76,7 @@ class AdminController extends AppController
     }
     public function index()
     {
-        $this->render('../Orders/index');
+        $this->render();
+        // $this->render('../Orders/index');
     }
 }

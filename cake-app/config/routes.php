@@ -79,11 +79,10 @@ return static function (RouteBuilder $routes) {
         // have the `'prefix' => 'Admin'` route element added that
         // will be required when generating URLs for these routes
         $admin->connect('/', ['controller' => 'Admin', 'action' => 'login']);
-        $admin->connect('/dashboard', ['controller' => 'Admin', 'action' => 'index']);
+        $admin->connect('/dashboard', ['controller' => 'Admin', 'action' => 'index'],['_name' => 'dashboard']);
         $admin->connect('/logout', ['controller' => 'Admin', 'action' => 'logout']);
-
-
-
+        $admin->connect('/kd-orders', ['controller' => 'KdOrders', 'action' => 'index'],['_name' => 'kd_orders']);
+        $admin->connect('/kd-vendors', ['controller' => 'KdVendors', 'action' => 'index'],['_name' => 'kd_vendors']);
         $admin->fallbacks(DashedRoute::class);
     });
 

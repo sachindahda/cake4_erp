@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Model\Table;
@@ -11,7 +12,7 @@ use Cake\Validation\Validator;
 /**
  * KdOrders Model
  *
- * @property \App\Model\Table\AdministratorsTable&\Cake\ORM\Association\BelongsTo $Administrators
+ * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\BelongsTo $Users
  *
  * @method \App\Model\Entity\KdOrder newEmptyEntity()
  * @method \App\Model\Entity\KdOrder newEntity(array $data, array $options = [])
@@ -47,8 +48,8 @@ class KdOrdersTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('Administrators', [
-            'foreignKey' => 'administrators_id',
+        $this->belongsTo('Users', [
+            'foreignKey' => 'users_id',
             'joinType' => 'INNER',
         ]);
     }
@@ -80,14 +81,14 @@ class KdOrdersTable extends Table
             ->maxLength('type', 50)
             ->allowEmptyString('type');
 
-        $validator
-            ->scalar('booking_type')
-            ->maxLength('booking_type', 255)
-            ->notEmptyString('booking_type');
+        // $validator
+        //     ->scalar('booking_type')
+        //     ->maxLength('booking_type', 255)
+        //     ->notEmptyString('booking_type');
 
         $validator
-            ->integer('administrators_id')
-            ->notEmptyString('administrators_id');
+            ->integer('users_id')
+            ->notEmptyString('users_id');
 
         $validator
             ->scalar('package')
@@ -97,20 +98,24 @@ class KdOrdersTable extends Table
         $validator
             ->scalar('name')
             ->maxLength('name', 255)
-            ->allowEmptyString('name');
+            ->requirePresence('name', 'create')
+            ->notEmptyString('name');
 
         $validator
             ->email('email')
-            ->allowEmptyString('email');
+            ->requirePresence('email', 'create')
+            ->notEmptyString('email');
 
         $validator
             ->scalar('contact')
             ->maxLength('contact', 100)
-            ->allowEmptyString('contact');
+            ->requirePresence('contact', 'create')
+            ->notEmptyString('contact');
 
         $validator
-            ->scalar('vanue_address')
-            ->allowEmptyString('vanue_address');
+            ->scalar('venue_address')
+            ->requirePresence('venue_address', 'create')
+            ->notEmptyString('venue_address');
 
         $validator
             ->scalar('latitude')
@@ -129,26 +134,35 @@ class KdOrdersTable extends Table
         $validator
             ->scalar('city')
             ->maxLength('city', 100)
-            ->allowEmptyString('city');
+            ->requirePresence('city', 'create')
+            ->notEmptyString('city');
 
         $validator
             ->scalar('state')
             ->maxLength('state', 255)
-            ->allowEmptyString('state');
+            ->requirePresence('state', 'create')
+            ->notEmptyString('state');
 
         $validator
             ->scalar('date')
             ->maxLength('date', 100)
-            ->allowEmptyString('date');
+            ->requirePresence('date', 'create')
+            ->notEmptyString('date');
 
         $validator
             ->scalar('quot_time')
-            ->maxLength('quot_time', 100)
-            ->allowEmptyString('quot_time');
-
+            // ->maxLength('quot_time', 100)
+            ->requirePresence('quot_time', 'create')
+            ->notEmptyString('quot_time');
+        $validator
+            ->integer('no_of_person')
+            ->requirePresence('no_of_person', 'create')
+            ->notEmptyString('no_of_person');
         $validator
             ->integer('qty')
-            ->allowEmptyString('qty');
+            ->requirePresence('qty', 'create')
+            ->notEmptyString('qty')
+            ->greaterThanOrEqual('qty', 1, __('Value must be at least 1'));
 
         $validator
             ->integer('staff')
@@ -167,16 +181,21 @@ class KdOrdersTable extends Table
 
         $validator
             ->decimal('cart_price')
-            ->allowEmptyString('cart_price');
+            ->requirePresence('cart_price', 'create')
+            ->notEmptyString('cart_price');
 
         $validator
             ->decimal('unit_price')
             ->requirePresence('unit_price', 'create')
-            ->notEmptyString('unit_price');
-
+            ->notEmptyString('unit_price')
+            ->greaterThanOrEqual('unit_price', 1, __('Value must be at least 1'));
+        $validator
+            ->scalar('gst')
+            ->requirePresence('gst', 'create')
+            ->notEmptyString('gst');
         $validator
             ->decimal('total_amt')
-            ->allowEmptyString('total_amt');
+            ->greaterThanOrEqual('total_amt', 1, __('Value must be at least 1'));
 
         $validator
             ->decimal('paid_amt')
@@ -218,7 +237,7 @@ class KdOrdersTable extends Table
      */
     public function buildRules(RulesChecker $rules): RulesChecker
     {
-        $rules->add($rules->existsIn('administrators_id', 'Administrators'), ['errorField' => 'administrators_id']);
+        $rules->add($rules->existsIn('users_id', 'Users'), ['errorField' => 'users_id']);
 
         return $rules;
     }

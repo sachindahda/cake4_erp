@@ -42,12 +42,12 @@ class AppController extends Controller
     public function initialize(): void
     {
         parent::initialize();
-        echo 'he';
-        die;
-        $this->loadComponent('RequestHandler');
-        $this->loadComponent('Flash');
-        $this->loadComponent('Authentication.Authentication');
-        $this->loadComponent('FormProtection');
+        // echo 'he';
+        // die;
+        // $this->loadComponent('RequestHandler');
+        // $this->loadComponent('Flash');
+        // $this->loadComponent('Authentication.Authentication');
+        // $this->loadComponent('FormProtection');
     }
     public function beforeFilter(\Cake\Event\EventInterface $event)
     {
@@ -61,5 +61,8 @@ class AppController extends Controller
             'info' => 'alert alert-info',
         ]]);
         $this->loadComponent('Authentication.Authentication');
+        // $this->loadComponent('FormProtection');
+        // $this->loadComponent('RequestHandler');
+
     }
 }
