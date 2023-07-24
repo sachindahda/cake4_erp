@@ -36,13 +36,13 @@ $currentRoute = $this->getRequest()->getAttribute('here');
       </div>
     </li>
 
-    <li class="nav-item <?= (in_array($this->request->getParam('controller') ,['Purchase','KdVendors'])) ? 'active' : '' ?>">
-      <a class="nav-link" data-toggle="collapse" href="#purchase" <?= (in_array($this->request->getParam('controller') ,['Purchase','KdVendors'])) ? 'aria-expanded="true"' : 'aria-expanded="false"' ?> aria-controls="purchase">
+    <li class="nav-item <?= (in_array($this->request->getParam('controller'), ['Purchase', 'KdVendors'])) ? 'active' : '' ?>">
+      <a class="nav-link" data-toggle="collapse" href="#purchase" <?= (in_array($this->request->getParam('controller'), ['Purchase', 'KdVendors'])) ? 'aria-expanded="true"' : 'aria-expanded="false"' ?> aria-controls="purchase">
         <i class="icon-grid-2 menu-icon"></i>
         <span class="menu-title">Purchase</span>
         <i class="menu-arrow"></i>
       </a>
-      <div class="collapse <?= (in_array($this->request->getParam('controller') ,['Purchase','KdVendors']))? 'show' : '' ?>" id="purchase">
+      <div class="collapse <?= (in_array($this->request->getParam('controller'), ['Purchase', 'KdVendors'])) ? 'show' : '' ?>" id="purchase">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item">
             <?= $this->Html->link(
@@ -101,6 +101,71 @@ $currentRoute = $this->getRequest()->getAttribute('here');
           <li class="nav-item">
             <?= $this->Html->link(
               'History',
+              'recipes/view/6',
+              ['escape' => false, 'class' => 'nav-link', 'url' => ['base' => false]]
+            ); ?>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item <?= ($this->request->getParam('controller') === 'Logistic') ? 'active' : '' ?>">
+      <a class="nav-link" data-toggle="collapse" href="#logistic" <?= ($this->request->getParam('controller') === 'Logistic') ? 'aria-expanded="true"' : 'aria-expanded="false"' ?> aria-controls="logistic">
+        <i class="icon-grid-2 menu-icon"></i>
+        <span class="menu-title">Logistic</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse <?= ($this->request->getParam('controller') === 'Logistic') ? 'show' : '' ?>" id="logistic">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <?= $this->Html->link(
+              'Logistic Partner',
+              'recipes/view/6',
+              ['escape' => false, 'class' => 'nav-link', 'url' => ['base' => false]]
+            ); ?>
+          </li>
+          <li class="nav-item">
+            <?= $this->Html->link(
+              'Ready to ship items',
+              'recipes/view/6',
+              ['escape' => false, 'class' => 'nav-link', 'url' => ['base' => false]]
+            ); ?>
+          </li>
+          <li class="nav-item">
+            <?= $this->Html->link(
+              'Shipped History',
+              'recipes/view/6',
+              ['escape' => false, 'class' => 'nav-link', 'url' => ['base' => false]]
+            ); ?>
+          </li>
+        
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item <?= ($this->request->getParam('controller') === 'Finance') ? 'active' : '' ?>">
+      <a class="nav-link" data-toggle="collapse" href="#finance" <?= ($this->request->getParam('controller') === 'Finance') ? 'aria-expanded="true"' : 'aria-expanded="false"' ?> aria-controls="finance">
+        <i class="icon-grid-2 menu-icon"></i>
+        <span class="menu-title">Finance</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse <?= ($this->request->getParam('controller') === 'Finance') ? 'show' : '' ?>" id="finance">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <?= $this->Html->link(
+              'Vendor Account',
+              'recipes/view/6',
+              ['escape' => false, 'class' => 'nav-link', 'url' => ['base' => false]]
+            ); ?>
+          </li>
+          <li class="nav-item">
+            <?= $this->Html->link(
+              'Customer Account',
+              'recipes/view/6',
+              ['escape' => false, 'class' => 'nav-link', 'url' => ['base' => false]]
+            ); ?>
+          </li>
+          <li class="nav-item">
+            <?= $this->Html->link(
+              'Logistic partner',
               'recipes/view/6',
               ['escape' => false, 'class' => 'nav-link', 'url' => ['base' => false]]
             ); ?>

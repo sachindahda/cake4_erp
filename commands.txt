@@ -50,6 +50,7 @@ bin/cake bake migration CreateProducts name:string description:text created modi
 
 bin/cake bake migration CreateVendors name:string email:string:unique:EMAIL_INDEX address:text city:string state:text zip:string country:text mobile:string website:string gst_number:string bank_account_number:string bank_ifsc:string bank_name:string bank_branch_name:string created modified
 
+bin/cake bake migration AlterColumnsOnKdVendors state:string country:string
 
 
 

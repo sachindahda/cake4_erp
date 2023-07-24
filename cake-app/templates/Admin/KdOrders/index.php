@@ -16,28 +16,10 @@
                                 <thead>
                                     <tr>
                                         <th>Sr. No.</th>
-                                        <th>Booking Type</th>
-                                        <th>Package</th>
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Contact</th>
-                                        <th>City</th>
-                                        <th>State</th>
-                                        <th>Date</th>
-                                        <th>Quot Time</th>
-                                        <th>Qty</th>
-                                        <th>Unit Price</th>
-                                        <th>No. of Person</th>
-                                        <th>GST</th>
-                                        <th>Transport</th>
-                                        <th>Staff Price</th>
-                                        <th>Cart Price</th>
-                                        <th>Total Amount</th>
-                                        <th>Paid Amount</th>
-                                        <th>Remaining Amount</th>
-                                        <th>Pay Remaining Amount</th>
                                         <th>Created</th>
-                                        <th>Modified</th>
                                         <th class="actions"><?= __('Actions') ?></th>
                                     </tr>
                                 </thead>
@@ -45,32 +27,15 @@
                                     <?php foreach ($kdOrders  as $index => $kdOrder) : ?>
                                         <tr>
                                             <td><?= $this->Number->format($index + 1) ?></td>
-                                            <td><?= h($kdOrder->booking_type) ?></td>
-                                            <td><?= h($kdOrder->package) ?></td>
+
                                             <td><?= h($kdOrder->name) ?></td>
                                             <td><?= h($kdOrder->email) ?></td>
                                             <td><?= h($kdOrder->contact) ?></td>
-                                            <td><?= h($kdOrder->city) ?></td>
-                                            <td><?= h($kdOrder->state) ?></td>
-                                            <td><?= h($kdOrder->date) ?></td>
-                                            <td><?= h($kdOrder->quot_time) ?></td>
-                                            <td><?= $kdOrder->qty === null ? '' : $this->Number->format($kdOrder->qty) ?></td>
-                                            <td><?= $this->Number->format($kdOrder->unit_price) ?></td>
-
-                                            <td><?= $kdOrder->no_of_person === null ? '' : $this->Number->format($kdOrder->no_of_person) ?></td>
-                                            <td><?= $kdOrder->gst ?>%</td>
-                                            <td><?= $this->Number->format($kdOrder->transport) ?></td>
-                                            <td><?= $kdOrder->staff_price === null ? '' : $this->Number->format($kdOrder->staff_price) ?></td>
-                                            <td><?= $kdOrder->cart_price === null ? '' : $this->Number->format($kdOrder->cart_price) ?></td>
-                                            <td><?= $kdOrder->total_amt === null ? '' : $this->Number->format($kdOrder->total_amt) ?></td>
-                                            <td><?= $kdOrder->paid_amt === null ? '' : $this->Number->format($kdOrder->paid_amt) ?></td>
-                                            <td><?= $kdOrder->remaining_amt === null ? '' : $this->Number->format($kdOrder->remaining_amt) ?></td>
-                                            <td><?= $kdOrder->pay_remaining_amt === null ? '' : $this->Number->format($kdOrder->pay_remaining_amt) ?></td>
                                             <td><?= h($kdOrder->created) ?></td>
-                                            <td><?= h($kdOrder->modified) ?></td>
                                             <td class="actions">
-                                                <?= $this->Html->link(__('Edit <i class="ti-file btn-icon-append"></i>'), ['action' => 'edit', $kdOrder->id],['escape' => false, 'class' => 'btn btn-dark btn-icon-text']) ?>
-                                                <?= $this->Form->postLink(__('Delete <i class="ti-alert btn-icon-append"></i>'), ['action' => 'delete', $kdOrder->id], ['confirm' => __('Are you sure you want to delete # {0}?', $kdOrder->id),'escape' => false, 'class' => 'btn btn-danger btn-rounded btn-fw']) ?>
+                                                <?= $this->Html->link(__('View <i class="ti-file btn-icon-append"></i>'), ['action' => 'view', $kdOrder->id], ['escape' => false, 'class' => 'badge badge-info']) ?>
+                                                <?= $this->Html->link(__('Edit <i class="ti-pencil btn-icon-append"></i>'), ['action' => 'edit', $kdOrder->id], ['escape' => false, 'class' => 'badge badge-warning']) ?>
+                                                <?= $this->Form->postLink(__('Delete <i class="ti-alert btn-icon-append"></i>'), ['action' => 'delete', $kdOrder->id], ['confirm' => __('Are you sure you want to delete # {0}?', $kdOrder->id), 'escape' => false, 'class' => 'badge badge-danger']) ?>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

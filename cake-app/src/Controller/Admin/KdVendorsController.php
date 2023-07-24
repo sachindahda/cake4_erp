@@ -33,7 +33,7 @@ class KdVendorsController extends AppController
     /**
      * View method
      *
-     * @param string|null $id Kd Vendor id.
+     * @param string|null $id Vendor id.
      * @return \Cake\Http\Response|null|void Renders view
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
@@ -57,11 +57,11 @@ class KdVendorsController extends AppController
         if ($this->request->is('post')) {
             $kdVendor = $this->KdVendors->patchEntity($kdVendor, $this->request->getData());
             if ($this->KdVendors->save($kdVendor)) {
-                $this->Flash->success(__('The kd vendor has been saved.'));
+                $this->Flash->success(__('The vendor has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The kd vendor could not be saved. Please, try again.'));
+            $this->Flash->error(__('The vendor could not be saved. Please, try again.'));
         }
         $this->set(compact('kdVendor'));
     }
@@ -69,7 +69,7 @@ class KdVendorsController extends AppController
     /**
      * Edit method
      *
-     * @param string|null $id Kd Vendor id.
+     * @param string|null $id Vendor id.
      * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
@@ -81,19 +81,20 @@ class KdVendorsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $kdVendor = $this->KdVendors->patchEntity($kdVendor, $this->request->getData());
             if ($this->KdVendors->save($kdVendor)) {
-                $this->Flash->success(__('The kd vendor has been saved.'));
+                $this->Flash->success(__('The  vendor has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The kd vendor could not be saved. Please, try again.'));
+            $this->Flash->error(__('The  vendor could not be saved. Please, try again.'));
         }
         $this->set(compact('kdVendor'));
+        $this->render('add');
     }
 
     /**
      * Delete method
      *
-     * @param string|null $id Kd Vendor id.
+     * @param string|null $id Vendor id.
      * @return \Cake\Http\Response|null|void Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
@@ -102,9 +103,9 @@ class KdVendorsController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $kdVendor = $this->KdVendors->get($id);
         if ($this->KdVendors->delete($kdVendor)) {
-            $this->Flash->success(__('The kd vendor has been deleted.'));
+            $this->Flash->success(__('The vendor has been deleted.'));
         } else {
-            $this->Flash->error(__('The kd vendor could not be deleted. Please, try again.'));
+            $this->Flash->error(__('The vendor could not be deleted. Please, try again.'));
         }
 
         return $this->redirect(['action' => 'index']);

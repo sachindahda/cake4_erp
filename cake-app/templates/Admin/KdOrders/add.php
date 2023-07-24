@@ -9,12 +9,17 @@
 <div class="main-panel">
     <div class="content-wrapper">
         <?= $this->Flash->render() ?>
-
+        <?php
+        $action = 'Create';
+        if ($this->request->getParam('action') == 'edit') {
+            $action = 'Edit';
+        }
+        ?>
         <div class="row">
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Create Order</h4>
+                        <h4 class="card-title"><?= $action ?> Order</h4>
 
                         <?= $this->Form->create($kdOrder, [
                             'novalidate' => true,
@@ -126,7 +131,13 @@
 
                                     </div>
                                     <div class="col-sm-2">
-                                        Rs. <p id="gst_amount"></p>
+                                        <?php
+                                        $gst_amount = 0;
+                                        if (isset($kdOrder->gst) && !empty($kdOrder->gst) && isset($kdOrder->cart_price) && !empty($kdOrder->cart_price)) {
+                                            $gst_amount = number_format(($kdOrder->cart_price * $kdOrder->gst) / 100, 2);
+                                        }
+                                        ?>
+                                        Rs. <p id="gst_amount"><?= $gst_amount; ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -148,13 +159,13 @@
 
                             </div>
                             <div class="col-md-6">
-                                <?= $this->Form->control('paid_amt', ['class' => 'form-control']) ?>
+                                <?= $this->Form->control('paid_amt', ['class' => 'form-control', 'id' => 'paid_amt']) ?>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-6">
-                                <?= $this->Form->control('remaining_amt', ['class' => 'form-control']) ?>
+                                <?= $this->Form->control('remaining_amt', ['class' => 'form-control', 'id' => 'remaining_amt', 'readonly' => true,]) ?>
 
                             </div>
                             <div class="col-md-6">

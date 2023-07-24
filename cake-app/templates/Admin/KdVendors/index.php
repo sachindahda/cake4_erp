@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-body">
                         <?= $this->Html->link(__('New Vendor'), ['action' => 'add'], ['class' => 'btn btn-primary float-right mb-2']) ?>
-                        <h4 class="card-title">Orders</h4>
+                        <h4 class="card-title">Vendors</h4>
                         <div class="table-responsive">
                             <table class="table table-striped" id="orders_dt">
                                 <thead>
@@ -15,18 +15,8 @@
                                         <th>Sr. No.</th>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <th>City</th>
-                                        <th>ZIP</th>
                                         <th>Mobile</th>
-                                        <th>Website</th>
-                                        <th>GST Number</th>
-                                        <th>Bank Account Number</th>
-                                        <th>Bank IFSC</th>
-                                        <th>Bank Name</th>
-                                        <th>Bank Branch Name</th>
                                         <th>Created</th>
-                                        <th>Modified</th>
-
                                         <th class="actions"><?= __('Actions') ?></th>
                                     </tr>
                                 </thead>
@@ -36,21 +26,12 @@
                                             <td><?= $this->Number->format($index + 1) ?></td>
                                             <td><?= h($kdVendor->name) ?></td>
                                             <td><?= h($kdVendor->email) ?></td>
-                                            <td><?= h($kdVendor->city) ?></td>
-                                            <td><?= h($kdVendor->zip) ?></td>
                                             <td><?= h($kdVendor->mobile) ?></td>
-                                            <td><?= h($kdVendor->website) ?></td>
-                                            <td><?= h($kdVendor->gst_number) ?></td>
-                                            <td><?= h($kdVendor->bank_account_number) ?></td>
-                                            <td><?= h($kdVendor->bank_ifsc) ?></td>
-                                            <td><?= h($kdVendor->bank_name) ?></td>
-                                            <td><?= h($kdVendor->bank_branch_name) ?></td>
                                             <td><?= h($kdVendor->created) ?></td>
-                                            <td><?= h($kdVendor->modified) ?></td>
                                             <td class="actions">
-                                                <?= $this->Html->link(__('View <i class="ti-file btn-icon-append"></i>'), ['action' => 'view', $kdVendor->id], ['escape' => false, 'class' => 'btn btn-dark btn-icon-text']) ?>
-                                                <?= $this->Html->link(__('Edit <i class="ti-file btn-icon-append"></i>'), ['action' => 'edit', $kdVendor->id], ['escape' => false, 'class' => 'btn btn-dark btn-icon-text']) ?>
-                                                <?= $this->Form->postLink(__('Delete <i class="ti-alert btn-icon-append"></i>'), ['action' => 'delete', $kdVendor->id], ['confirm' => __('Are you sure you want to delete # {0}?', $kdVendor->id), 'escape' => false, 'class' => 'btn btn-danger btn-rounded btn-fw']) ?>
+                                                <?= $this->Html->link(__('View <i class="ti-file btn-icon-append"></i>'), ['action' => 'view', $kdVendor->id], ['escape' => false, 'class' => 'badge badge-info']) ?>
+                                                <?= $this->Html->link(__('Edit <i class="ti-pencil btn-icon-append"></i>'), ['action' => 'edit', $kdVendor->id], ['escape' => false, 'class' => 'badge badge-warning']) ?>
+                                                <?= $this->Form->postLink(__('Delete <i class="ti-alert btn-icon-append"></i>'), ['action' => 'delete', $kdVendor->id], ['confirm' => __('Are you sure you want to delete # {0}?', $kdVendor->id), 'escape' => false, 'class' => 'badge badge-danger']) ?>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
