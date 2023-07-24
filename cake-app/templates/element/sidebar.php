@@ -54,7 +54,7 @@ $currentRoute = $this->getRequest()->getAttribute('here');
           <li class="nav-item">
             <?= $this->Html->link(
               'Purchase Orders',
-              'recipes/view/6',
+              '/recipes/view/6',
               ['escape' => false, 'class' => 'nav-link', 'url' => ['base' => false]]
             ); ?>
           </li>
@@ -73,35 +73,35 @@ $currentRoute = $this->getRequest()->getAttribute('here');
           <li class="nav-item">
             <?= $this->Html->link(
               'New Order',
-              'recipes/view/6',
+              '/recipes/view/6',
               ['escape' => false, 'class' => 'nav-link', 'url' => ['base' => false]]
             ); ?>
           </li>
           <li class="nav-item">
             <?= $this->Html->link(
               'In Process',
-              'recipes/view/6',
+              '/recipes/view/6',
               ['escape' => false, 'class' => 'nav-link', 'url' => ['base' => false]]
             ); ?>
           </li>
           <li class="nav-item">
             <?= $this->Html->link(
               'Ready Products',
-              'recipes/view/6',
+              '/recipes/view/6',
               ['escape' => false, 'class' => 'nav-link', 'url' => ['base' => false]]
             ); ?>
           </li>
           <li class="nav-item">
             <?= $this->Html->link(
               'Ready to Publish',
-              'recipes/view/6',
+              '/recipes/view/6',
               ['escape' => false, 'class' => 'nav-link', 'url' => ['base' => false]]
             ); ?>
           </li>
           <li class="nav-item">
             <?= $this->Html->link(
               'History',
-              'recipes/view/6',
+              '/recipes/view/6',
               ['escape' => false, 'class' => 'nav-link', 'url' => ['base' => false]]
             ); ?>
           </li>
@@ -119,21 +119,21 @@ $currentRoute = $this->getRequest()->getAttribute('here');
           <li class="nav-item">
             <?= $this->Html->link(
               'Logistic Partner',
-              'recipes/view/6',
+              '/recipes/view/6',
               ['escape' => false, 'class' => 'nav-link', 'url' => ['base' => false]]
             ); ?>
           </li>
           <li class="nav-item">
             <?= $this->Html->link(
               'Ready to ship items',
-              'recipes/view/6',
+              '/recipes/view/6',
               ['escape' => false, 'class' => 'nav-link', 'url' => ['base' => false]]
             ); ?>
           </li>
           <li class="nav-item">
             <?= $this->Html->link(
               'Shipped History',
-              'recipes/view/6',
+              '/recipes/view/6',
               ['escape' => false, 'class' => 'nav-link', 'url' => ['base' => false]]
             ); ?>
           </li>
@@ -152,21 +152,21 @@ $currentRoute = $this->getRequest()->getAttribute('here');
           <li class="nav-item">
             <?= $this->Html->link(
               'Vendor Account',
-              'recipes/view/6',
+              '/recipes/view/6',
               ['escape' => false, 'class' => 'nav-link', 'url' => ['base' => false]]
             ); ?>
           </li>
           <li class="nav-item">
             <?= $this->Html->link(
               'Customer Account',
-              'recipes/view/6',
+              '/recipes/view/6',
               ['escape' => false, 'class' => 'nav-link', 'url' => ['base' => false]]
             ); ?>
           </li>
           <li class="nav-item">
             <?= $this->Html->link(
               'Logistic partner',
-              'recipes/view/6',
+              '/recipes/view/6',
               ['escape' => false, 'class' => 'nav-link', 'url' => ['base' => false]]
             ); ?>
           </li>
